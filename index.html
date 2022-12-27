@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,21 +9,26 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
+
 <body>
     <div class="main">
         <img class="logo" src="assets/Vector.png" alt="logo">
         <div class="input-area">
-            <textarea name="text-area" id="text-area" cols="30" rows="10"
+            <textarea name="text-area" id="text-area" cols="39" rows="10"
                 placeholder="Digite seu texto aqui"></textarea>
         </div>
         <div class="message-board">
             <img src="assets/High quality products 1 1.png" alt="">
+            <h2 id="no-message-warning">Nenhuma mensagem encontrada</h2>
+            <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
         </div>
         <div class="buttons">
-            <p>Apenas letras maiúsculas ou minúsculas.</p>
+            <img id="warning-sign" src="assets/warning-sign.png" alt="">
+            <p id="warning">Apenas letras maiúsculas ou minúsculas.</p>
             <button id="cripto-button">Criptografar</button>
             <button>Descriptografar</button>
         </div>
     </div>
 </body>
+
 </html>
