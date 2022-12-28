@@ -219,25 +219,18 @@ body {
     width: 100%;
   }
 
-  .buttons {
-    position: absolute;
-    display: inline-block;
-    left: 40px;
-    right: 40px;
-    top: 870px;
-  }
-
   #crypt-button {
     position: absolute;
-    left: 0px;
-    top: 40px;
+    left: 40px;
+    top: 870px;
+    right: 396px;
   }
 
   #decrypt-button {
     position: absolute;
-    margin: 0 0 0 25px;
-    right: 0px;
-    top: 40px;
+    left: 396px;
+    top: 870px;
+    right: 40px;
     background: none;
   }
 
@@ -253,6 +246,12 @@ body {
 
   .message-board img {
     display: none;
+  }
+
+  #warning {
+    position: absolute;
+    left: 40px;
+    top: 836px;
   }
 
   #no-message-warning {

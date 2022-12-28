@@ -29,7 +29,7 @@ function decryptText() {
       "hidden";
     document.querySelector("#message-board-previous").style.visibility =
       "visible";
-      decryptText = decrypt(decryptText);
+    decryptText = decrypt(decryptText);
 
     document.getElementById("message-board-text-area").value = decryptText;
   }
@@ -37,7 +37,6 @@ function decryptText() {
 
 function copyToClipBoard() {
   let copyText = document.querySelector("#message-board-text-area");
-
   navigator.clipboard.write(copyText);
   document.querySelector("#text-area").value = copyText.value;
   document.querySelector("#message-board-text-area").value = "";
@@ -45,15 +44,44 @@ function copyToClipBoard() {
 }
 
 function encrypt(text) {
-  text = text.replaceAll("e", "enter");
-  text = text.replaceAll("i", "imes");
-  text = text.replaceAll("a", "ai");
-  text = text.replaceAll("o", "ober");
-  text = text.replaceAll("u", "ufat");
-  return text;
+  let substring = "";
+  let encryptedWord = "";
+  for (let index = 0; index < text.length; index++) {
+    substring = text.substring(index, index + 1);
+    switch (substring) {
+      case "a":
+        substring = "ai";
+        break;
+      case "e":
+        substring = "enter";
+        break;
+      case "i":
+        substring = "imes";
+        break;
+      case "o":
+        substring = "ober";
+        break;
+      case "u":
+        substring = "ufat";
+        break;
+    }
+    encryptedWord += substring;
+  }
+  return encryptedWord;
 }
 
-function decrypt(decryptText) {
-    decryptText.replaceAll("enter", "e");
-    return decryptText;
+function decrypt(text) {
+  let substring = "";
+  let decryptedWord = "";
+  for (let index = 0; index < text.length; index++) {
+    substring += text.substring(index, index + 1);
+
+    switch (substring) {
+      case substring.match(/(ai)/i):
+        decryptedWord += substring.replace("ai", "a");
+        break;
+    }
+    decryptedWord += substring;
+  }
+  return decryptedWord;
 }
