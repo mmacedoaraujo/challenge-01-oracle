@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="scripts\script.js"></script>
     <link rel="stylesheet" href="reset-css.css">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
@@ -17,18 +18,24 @@
             <textarea name="text-area" id="text-area" cols="39" rows="10"
                 placeholder="Digite seu texto aqui"></textarea>
         </div>
-        <div class="message-board">
-            <img src="assets/High quality products 1 1.png" alt="">
-            <h2 id="no-message-warning">Nenhuma mensagem encontrada</h2>
-            <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
+        <div class="message-board" id="message-board">
+            <div id="message-board-warning">
+                <img src="assets/High quality products 1 1.png" alt="">
+                <h2 id="no-message-warning">Nenhuma mensagem encontrada</h2>
+                <p>Digite um texto que você deseja criptografar ou descriptografar.</p>
+                
+            </div>
+            <div id="message-board-previous">
+                <textarea disabled="yes" id="message-board-text-area" cols="30" rows="10"></textarea>
+                <button id="copy-button" class="copy-button">Copiar</button>
+            </div>
         </div>
-        <div class="buttons">
-            <img id="warning-sign" src="assets/warning-sign.png" alt="">
-            <p id="warning">Apenas letras maiúsculas ou minúsculas.</p>
-            <button id="crypt-button">Criptografar</button>
-            <button id="decrypt-button">Descriptografar</button>
-        </div>
+        <img id="warning-sign" src="assets/warning-sign.png" alt="">
+        <p id="warning">Apenas letras maiúsculas ou minúsculas.</p>
+        <button id="crypt-button" name="crypt-button">Criptografar</button>
+        <button id="decrypt-button" class="decrypt-button">Descriptografar</button>
     </div>
 </body>
+
 
 </html>
