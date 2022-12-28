@@ -72,16 +72,12 @@ function encrypt(text) {
 
 function decrypt(text) {
   let substring = "";
-  let decryptedWord = "";
-  for (let index = 0; index < text.length; index++) {
-    substring += text.substring(index, index + 1);
-
-    switch (substring) {
-      case substring.match(/(ai)/i):
-        decryptedWord += substring.replace("ai", "a");
-        break;
-    }
-    decryptedWord += substring;
-  }
+  let decryptedWord = text;
+  decryptedWord = text.replace(/enter/g, "e")
+    .replace(/imes/g, "i")
+    .replace(/ai/g, "a")
+    .replace(/ober/g, "o")
+    .replace(/ufat/g, "u");
+    
   return decryptedWord;
 }
