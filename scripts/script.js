@@ -1,3 +1,4 @@
+let width = window.matchMedia("(max-width: 768px)");
 window.onload = function () {
   let criptButton = document.querySelector("#crypt-button");
   criptButton.onclick = encryptText;
@@ -5,12 +6,24 @@ window.onload = function () {
   copyButton.onclick = copyToClipBoard;
   let decryptButton = document.querySelector("#decrypt-button");
   decryptButton.onclick = decryptText;
+  if (width.matches) {
+    displayTheCurrentEncryptedMessage("none");
+  }
 };
+
+function displayTheCurrentEncryptedMessage(text) {
+  document.getElementById("message-board-previous").style.display = text;
+}
 
 function encryptText() {
   let text = document.querySelector("#text-area").value;
   text = encrypt(text);
-  if (text != "" && !text.match(/[\d]/gim)) {
+  if (width.matches && text != "" && !text.match(/[\d]/gim)) {
+    document.querySelector("#message-board").style.visibility = "hidden";
+    displayTheCurrentEncryptedMessage("inline-block");
+
+    document.getElementById("message-board-text-area").value = text;
+  } else if (text != "" && !text.match(/[\d]/gim)) {
     document.querySelector("#text-area").value = "";
     document.querySelector("#message-board-warning").style.visibility =
       "hidden";
@@ -35,12 +48,11 @@ function decryptText() {
   }
 }
 
-function copyToClipBoard() {
-  let copyText = document.querySelector("#message-board-text-area");
+async function copyToClipBoard() {
+  let copyText = document.getElementById("message-board-text-area");
   navigator.clipboard.write(copyText);
   document.querySelector("#text-area").value = copyText.value;
   document.querySelector("#message-board-text-area").value = "";
-  alert("Copied the text: " + copyText.value);
 }
 
 function encrypt(text) {
@@ -73,11 +85,12 @@ function encrypt(text) {
 function decrypt(text) {
   let substring = "";
   let decryptedWord = text;
-  decryptedWord = text.replace(/enter/g, "e")
+  decryptedWord = text
+    .replace(/enter/g, "e")
     .replace(/imes/g, "i")
     .replace(/ai/g, "a")
     .replace(/ober/g, "o")
     .replace(/ufat/g, "u");
-    
+
   return decryptedWord;
 }
