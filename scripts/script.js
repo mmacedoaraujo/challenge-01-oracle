@@ -71,9 +71,17 @@ function decryptText() {
 }
 
 async function copyToClipBoard() {
-  var copyText = document.getElementById("message-board-text-area").value;
-  navigator.clipboard.writeText(copyText);
-  document.querySelector("#message-board-text-area").value = "";
+  var copyText = document.getElementById("message-board-text-area");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard
+      .writeText(copyText.value)
+      .then(() => {
+        alert("successfully copied");
+      })
+      .catch(() => {
+        alert("something went wrong");
+      });
 }
 
 function encrypt(text) {
