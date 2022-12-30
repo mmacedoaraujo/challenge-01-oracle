@@ -2,10 +2,16 @@ let width = window.matchMedia("(max-width: 768px)");
 window.onload = function () {
   let criptButton = document.querySelector("#crypt-button");
   criptButton.onclick = encryptText;
-  let copyButton = document.querySelector("#copy-button");
-  copyButton.onclick = copyToClipBoard;
+
   let decryptButton = document.querySelector("#decrypt-button");
   decryptButton.onclick = decryptText;
+
+  let copyButton = document.querySelector("#copy-button");
+  copyButton.onclick = copyToClipBoard;
+
+  let eraseButton = document.querySelector("#erase-button");
+  eraseButton.onclick = eraseAll;
+
   if (width.matches) {
     displayTheCurrentEncryptedMessage("none");
   }
@@ -15,15 +21,31 @@ function displayTheCurrentEncryptedMessage(text) {
   document.getElementById("message-board-previous").style.display = text;
 }
 
+function displayMessageBoard(text) {
+  document.getElementById("message-board").style.visibility = text;
+  document.getElementById("message-board-warning").style.visibility = text;
+}
+
+function eraseAll() {
+  if (document.getElementById("message-board-text-area").value == "") {
+  } else {
+    document.getElementById("message-board-text-area").value = "";
+    displayTheCurrentEncryptedMessage("none");
+    displayMessageBoard("visible");
+  }
+}
+
 function encryptText() {
   let text = document.querySelector("#text-area").value;
   text = encrypt(text);
   if (width.matches && text != "" && !text.match(/[\d]/gim)) {
+    document.getElementById("text-area").value = "";
     document.querySelector("#message-board").style.visibility = "hidden";
     displayTheCurrentEncryptedMessage("inline-block");
 
     document.getElementById("message-board-text-area").value = text;
   } else if (text != "" && !text.match(/[\d]/gim)) {
+    displayTheCurrentEncryptedMessage("inline-block");
     document.querySelector("#text-area").value = "";
     document.querySelector("#message-board-warning").style.visibility =
       "hidden";
@@ -49,9 +71,8 @@ function decryptText() {
 }
 
 async function copyToClipBoard() {
-  let copyText = document.getElementById("message-board-text-area");
-  navigator.clipboard.write(copyText);
-  document.querySelector("#text-area").value = copyText.value;
+  var copyText = document.getElementById("message-board-text-area").value;
+  navigator.clipboard.writeText(copyText);
   document.querySelector("#message-board-text-area").value = "";
 }
 

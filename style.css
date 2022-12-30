@@ -87,9 +87,10 @@ body {
   padding: 0 50px;
 }
 
-#copy-button {
+#copy-button,
+#erase-button {
   position: absolute;
-  top: 845px;
+  top: 750px;
   left: 32px;
   right: 32px;
   bottom: 32px;
@@ -108,6 +109,15 @@ body {
 
 #copy-button:active {
   background-color: hsl(0, 0%, 80%);
+}
+
+#erase-button {
+  position: absolute;
+  top: 845px;
+  left: 32px;
+  right: 32px;
+  bottom: 32px;
+  width: 328px;
 }
 
 #warning {
@@ -200,15 +210,13 @@ body {
 #message-board-text-area {
   position: absolute;
   width: 336px;
-  height: 781px;
+  height: 680px;
   left: 32px;
   right: 32px;
   top: 32px;
   bottom: 131px;
   background: white;
 }
-
-
 
 .hidden {
   opacity: 0;
@@ -315,9 +323,15 @@ body {
 
   #copy-button {
     position: absolute;
-    width: auto;
+    width: 300px;
     top: 244px;
     left: 32px;
-    margin: 0 auto;
+  }
+
+  #erase-button {
+    position: absolute;
+    width: 300px;
+    top: 244px;
+    left: 350px;
   }
 }
