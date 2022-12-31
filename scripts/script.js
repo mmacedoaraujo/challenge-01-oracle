@@ -59,6 +59,7 @@ function encryptText() {
 function decryptText() {
   let decryptText = document.querySelector("#text-area").value;
   if (decryptText != "" && !decryptText.match(/[\d]/gim)) {
+    displayTheCurrentEncryptedMessage("inline-block");
     document.querySelector("#text-area").value = "";
     document.querySelector("#message-board-warning").style.visibility =
       "hidden";
